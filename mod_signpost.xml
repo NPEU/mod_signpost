@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" version="3.2.0" method="upgrade">
+
+    <name>MOD_SIGNPOST</name>
+    <author>Andy Kirk</author>
+    <authorEmail>andy.kirk@npeu.ox.ac.uk</authorEmail>
+    <authorUrl>https://www.npeu.ox.ac.uk</authorUrl>
+    <creationDate>June 2019</creationDate>
+    <copyright>(C) NPEU 2019</copyright>
+    <license>MIT License; see LICENSE.md</license>
+
+    <!--  The version string is recorded in the components table -->
+    <version>1.0.0</version>
+    <!-- The description is optional and defaults to the name -->
+    <description>MOD_SIGNPOST_XML_DESCRIPTION</description>
+
+    <updateservers>
+        <!-- Note: No spaces or linebreaks allowed between the server tags -->
+        <server type="extension" name="NPEU: mod_signpost Update Site">https://raw.githubusercontent.com/NPEU/mod_signpost/master/update-manifest.xml</server>
+    </updateservers>
+
+    <files>
+        <filename module="mod_signpost">mod_signpost.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                name="signs"
+                type="subform"
+                label="MOD_SIGNPOST_SIGNS_LABEL"
+                description="MOD_SIGNPOST_SIGNS_DESC"
+                multiple="true"
+                min="1"
+                max="5"
+            >
+                <form>
+                    <field
+                        name="url"
+                        type="url"
+                        label="MOD_SIGNPOST_SIGNS_URL_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_URL_DESC"
+                    />
+                    <field
+                        name="content"
+                        type="textarea"
+                        label="MOD_SIGNPOST_SIGNS_CONTENT_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_CONTENT_DESC"
+                        default=""
+                        rows="5"
+                        filter="raw"
+                        class="monospace"
+                    />
+                    <field
+                        name="padding"
+                        type="radio"
+                        label="MOD_SIGNPOST_SIGNS_PADDING_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_PADDING_DESC"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                        filter="integer"
+                    >
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                    </field>
+                    <field
+                        name="colspan"
+                        type="radio"
+                        label="MOD_SIGNPOST_SIGNS_COLSPAN_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_COLSPAN_DESC"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                        filter="integer"
+                    >
+                        <option value="1">JYES</option>
+                        <option value="0">JNO</option>
+                    </field>
+                    <field
+                        name="signclass_sfx"
+                        type="text"
+                        label="MOD_SIGNPOST_SIGNS_CLASSSFX_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_CLASSSFX_DESC"
+                    />
+                    <field
+                        name="svg"
+                        type="textarea"
+                        label="MOD_SIGNPOST_SIGNS_SVG_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_SVG_DESC"
+                        default=""
+                        rows="8"
+                        filter="raw"
+                        class="monospace"
+                    />
+                    
+                    <field
+                        name="data_src"
+                        type="url"
+                        label="MOD_SIGNPOST_SIGNS_DATA_SRC_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_DATA_SRC_DESC"
+                        size="40"
+                        default=""
+                    />
+                    <field
+                        name="data_src_err"
+                        type="textarea"
+                        label="MOD_SIGNPOST_SIGNS_DATA_SOURCE_ERROR_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_DATA_SOURCE_ERROR_DESC"
+                        default="Data could not be fetched from the data source."
+                        rows="3"
+                    />
+                    <field
+                        name="data_decode_err"
+                        type="textarea"
+                        label="MOD_SIGNPOST_SIGNS_DATA_DECODE_ERROR_LABEL"
+                        description="MOD_SIGNPOST_SIGNS_DATA_DECODE_ERROR_DESC"
+                        default="Data could not be decoded as JSON."
+                        rows="3"
+                    />
+                </form>
+            </field>
+            </fieldset>
+        </fields>
+    </config>
+
+</extension>
