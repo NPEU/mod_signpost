@@ -59,10 +59,10 @@ $signs = (array) $params->get('signs');
                 }
 
                 if (!$data = file_get_contents($data_src)) {
-                    $sign_content = Markdown::defaultTransform($data_src_err);
+                    $sign_content = $data_src_err;
                 } else {
                     if (!$json = json_decode($data)) {
-                        $sign_content = Markdown::defaultTransform($data_decode_err);
+                        $sign_content = $data_decode_err;
                     } else {
                         $twig = ModSignpostHelper::getTwig(array(
                             'tpl' => $data_tpl
