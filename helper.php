@@ -53,6 +53,23 @@ class ModSignpostHelper
 
         $twig->addFilter($md_filter);
         // Use like {{ var|md|raw }}
+        
+        // Add blockless filter:
+        // This is in case the the output needs to appear inside an inine element.
+        // Block elements shouldn't really appear inside inline elements (except links).
+        // Not we're only dealing with <p> here, not other blocks so may need work.
+        $blockless_filter = new Twig_SimpleFilter('blockless', function ($string) {
+            $new_string = $string;
+
+            // Convert <p> to <br>:
+            $new_string = trim(preg_replace('#</p>.*?<p>#m', "\n<br><br>\n", $new_string));
+            // Remove wrapping <p>:
+            $new_string = trim(preg_replace(array('#^<p>#', '#</p>$#'), '', $new_string));
+            
+            return $new_string;
+        });
+
+        $twig->addFilter($blockless_filter);
 
         // Add pad filter:
         /*$pad_filter = new Twig_SimpleFilter('pad', function ($string, $length, $pad = ' ', $type = 'right') {
