@@ -21,18 +21,6 @@ use \Michelf\Markdown;
 class ModSignpostHelper
 {
     /**
-     * Does a thing
-     *
-     * @param   \Joomla\Registry\Registry  &$params  module parameters object
-     *
-     * @return  mixed
-     */
-    /*public static function getSomething(&$params)
-    {
-        
-    }*/
-    
-    /**
      * Gets a twig instance - useful as we don't have to re-declare customisations each time.
      *
      * @param  array    $tpls   Array of strings bound to template names
