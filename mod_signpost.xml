@@ -26,6 +26,7 @@
         <folder>language</folder>
         <folder>rules</folder>
         <folder>tmpl</folder>
+        <folder>vendor</folder>
     </files>
 
     <config>
