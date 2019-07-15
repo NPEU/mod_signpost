@@ -1,11 +1,18 @@
 {
-    "name": "npeu/mod_brochure",
-    "type": "project",
-    "version": "0.0.1",
+    "name": "npeu/mod_signpost",
     "description": "This file lists all the PHP packages required for the project.",
+    "type": "project",
+    "version": "1.0.0",
+    "license": "MIT",
     "require": {
         "twig/twig": "2.0",
         "michelf/php-markdown": "^1.8",
         "meyfa/php-svg": "^0.9.0"
-    }
+    },
+    "authors": [
+        {
+            "name": "Andy Kirk",
+            "email": "andy.kirk@npeu.ox.ac.uk"
+        }
+    ]
 }
