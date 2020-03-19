@@ -20,6 +20,7 @@ $signs = (array) $params->get('signs');
 <div class="c-signpost-wrap  u-fill-height">
     <div class="c-signpost  u-fill-height">
         <?php foreach ($signs as $sign): ?>
+        <?php if (isset($sign->status) && $sign->status == '0') { continue; } ?>
         <?php
             $sign_class= 'c-sign';
             if ($sign->colspan) {
