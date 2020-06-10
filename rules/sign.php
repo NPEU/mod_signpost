@@ -9,8 +9,6 @@
 
 defined('_JEXEC') or die;
 
-ini_set('display_errors', 'on');
-
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 use SVG\SVG;
