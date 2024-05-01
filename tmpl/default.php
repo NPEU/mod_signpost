@@ -9,9 +9,9 @@
 
 defined('_JEXEC') or die;
 
-$signs = (array) $params->get('signs');
+use NPEU\Template\Npeu6\Site\Helper\Npeu6Helper as TplNPEU6Helper;
 
-\JLoader::register('TplNPEU6Helper', dirname(dirname(__DIR__)) . '/helper.php');
+$signs = (array) $params->get('signs');
 
 $page_brand = TplNPEU6Helper::get_brand();
 $theme = '';
