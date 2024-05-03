@@ -22,7 +22,7 @@
     <namespace path="src">NPEU\Module\Signpost</namespace>
 
     <files>
-        <filename module="mod_signpost">services</filename>
+        <folder module="mod_signpost">services</folder>
         <folder>language</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
