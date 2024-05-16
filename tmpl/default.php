@@ -3,47 +3,50 @@
  * @package     Joomla.Site
  * @subpackage  mod_signpost
  *
- * @copyright   Copyright (C) NPEU 2019.
+ * @copyright   Copyright (C) NPEU 2024.
  * @license     MIT License; see LICENSE.md
  */
 
 defined('_JEXEC') or die;
 
-
-$doc = JFactory::getDocument();
+use NPEU\Template\Npeu6\Site\Helper\Npeu6Helper as TplNPEU6Helper;
 
 $signs = (array) $params->get('signs');
-#echo '<pre>'; var_dump($signs); echo '</pre>'; exit;
 
+$page_brand = TplNPEU6Helper::get_brand();
+$theme = '';
+#echo '<pre>'; var_dump($page_brand); echo '</pre>'; exit;
 ?>
 <?php if (count($signs) > 0) : ?>
-<div class="c-signpost-wrap  u-fill-height">
-    <div class="c-signpost  u-fill-height">
-        <?php foreach ($signs as $sign): ?>
+<div class="u-fill-height  mod_signpost">
+    <div class="c-signpost">
+        <?php foreach ($signs as $k => $sign): ?>
         <?php if (isset($sign->status) && $sign->status == '0') { continue; } ?>
         <?php
-            $sign_class= 'c-sign';
+            $sign_class= 'c-sign  d-background--sloped';
             if ($sign->colspan) {
                 $sign_class .= '  c-sign--span-all';
             }
-            
-            $sfx_class= '';
-            if (!empty($sign->signclass_sfx)) {
-                $sfx_class = $sign->signclass_sfx;
+
+
+            if ($sign->signclass_sfx == '--alt') {
+                $theme = '  t-secondary';
             }
-            
+
             $padding_class = '';
             if ($sign->padding) {
-                $padding_class = '  u-padding--top--l  u-padding--bottom--l';
+                $padding_class = '  l-box--space--inline--s  l-box--space--block--l';
+            } else {
+                $padding_class = '  l-box--space--edge--s';
             }
-            
+
             $svg = '';
             if (!empty($sign->svg)) {
                 $svg = '<span class="c-sign__svg" style="background-image: url(\'data:image/svg+xml;base64,' . base64_encode($sign->svg) . '\');"></span>';
             }
-            
+
             $sign_content = $sign->content;
-            
+
             $data_src = $sign->data_src;
             if (!empty($data_src)) {
 
@@ -65,17 +68,17 @@ $signs = (array) $params->get('signs');
                     if (!$json = json_decode($data)) {
                         $sign_content = $data_decode_err;
                     } else {
-                        $twig = ModSignpostHelper::getTwig(array(
+                        /*$twig = ModSignpostHelper::getTwig(array(
                             'tpl' => $data_tpl
-                        ));
+                        ));*/
 
-                        $sign_content = $twig->render('tpl', array('data' => $json));
+                        $sign_content = $twig->render('tpl_' . $k, ['data' => $json]);
                     }
                 }
             }
         ?>
-        <div class="<?php echo $sign_class; ?>  t-neoclear<?php echo $sfx_class; ?>">
-            <a href="<?php echo $sign->url; ?>" class="c-sign__link">
+        <div class="<?php echo $sign_class; ?><?php echo $theme; ?>">
+            <a href="<?php echo $sign->url; ?>" class="c-sign__link  c-sign--padding--xs">
                 <span class="c-sign__centered-content<?php echo $padding_class; ?>">
                     <?php echo $svg; ?>
                     <?php echo $sign_content; ?>
