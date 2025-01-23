@@ -82,45 +82,7 @@ class SignRule extends FormRule
             }
         }
 
-        /*$data = Factory::getApplication()->input->get('jform', array(), 'post', 'array');
-        #echo '<pre>'; var_dump($data); echo '</pre>'; exit;
-
-        $path = JPATH_ROOT . '/' . $data['uploadfolder'] . '/' . $data['csvfolder'];
-        if (!file_exists($path)) {
-            mkdir($path);
-        }
-        return true;*/
-
-        /*$fieldName = (string) $element['name'];
-        $ruleType  = $input->get(self::RULE_TYPE_FIELD);
-
-        if ($ruleType === $fieldName || ($ruleType === 'custom' && $group === self::CUSTOM_RULE_GROUP)) {
-            return $this->validateField($element, $value, $group, $form);
-        }
-
-        return true;*/
+        return true;
     }
 
-    /**
-     * @param   \SimpleXMLElement  $element  The SimpleXMLElement for the field.
-     * @param   mixed              $value    The field value.
-     * @param   ?string            $group    The form field group the element belongs to.
-     * @param   Form|null          $form     The Form object against which the field is tested/
-     *
-     * @return boolean  True if field is valid
-     *
-     * @since  4.1.0
-     */
-    /*private function validateField(\SimpleXMLElement $element, $value, ?string $group = null, ?Form $form = null): bool
-    {
-        $elementType = (string) $element['type'];
-
-        // If element is of cron type, we test against options and return
-        if ($elementType === 'cron') {
-            return (new OptionsRule())->test($element, $value, $group, null, $form);
-        }
-
-        // Test for a positive integer value and return
-        return filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
-    }*/
 }
