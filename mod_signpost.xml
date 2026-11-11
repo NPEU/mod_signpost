@@ -65,11 +65,12 @@
                     />
                     <field
                         name="content"
-                        type="textarea"
+                        type="editor"
                         label="MOD_SIGNPOST_SIGNS_CONTENT_LABEL"
                         description="MOD_SIGNPOST_SIGNS_CONTENT_DESC"
                         default=""
                         rows="5"
+                        editor="codemirror"
                         filter="raw"
                         class="monospace"
                     />
@@ -105,11 +106,12 @@
                     />
                     <field
                         name="svg"
-                        type="textarea"
+                        type="editor"
                         label="MOD_SIGNPOST_SIGNS_SVG_LABEL"
                         description="MOD_SIGNPOST_SIGNS_SVG_DESC"
                         default=""
                         rows="8"
+                        editor="codemirror"
                         filter="raw"
                         class="monospace"
                     />
